@@ -7,9 +7,9 @@ export default function Projects() {
     <section className="bg-black px-8 py-32" id="projects">
       <div className="mx-auto max-w-7xl">
         <div className="mb-20 space-y-4">
-          <span className="text-xs font-bold tracking-widest uppercase text-neutral-500 md:text-xl"
-          style={{ fontFamily: "'Caveat', cursive", fontWeight: 600 }}>Projetos em destaque</span>
-          <h2 className="font-headline text-5xl font-bold text-white">Design que gera resultados</h2>
+          <span className="text-xs font-bold tracking-widest uppercase text-neutral-400 md:text-xl"
+          style={{ fontFamily: "'Caveat', cursive", fontWeight: 600 }}>Design que gera resultados</span>
+          <h2 className="font-headline text-5xl font-bold text-white">Projetos em destaque</h2>
         </div>
         <div className="flex flex-col gap-12">
           {projects.map((project) => (

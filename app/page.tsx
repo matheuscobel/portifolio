@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Strengths from "@/components/Strengths";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Strengths />
       </main>
       <Footer />
+      <Analytics />
     </>
   );
 }
