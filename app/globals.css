@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f9f9f9;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Reddit Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-surface-container-highest: #dde4e5;
+  --color-on-surface-variant: #5a6061;
+  --color-tertiary-fixed-dim: #c2def0;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface: #f9f9f9;
+  --color-on-primary-fixed: #403f3f;
+  --color-primary-fixed-dim: #d6d4d3;
+  --color-error-container: #fe8983;
+  --color-on-surface: #2d3435;
+  --color-on-primary-container: #525151;
+  --color-outline: #757c7d;
+  --color-surface-container: #ebeeef;
+  --color-on-tertiary-fixed: #2c4655;
+  --color-primary-dim: #535252;
+  --color-secondary-fixed-dim: #d6d4d3;
+  --color-on-primary: #faf7f6;
+  --color-surface-container-high: #e4e9ea;
+  --color-secondary-fixed: #e4e2e1;
+  --color-on-background: #2d3435;
+  --color-tertiary: #486272;
+  --color-error-dim: #4e0309;
+  --color-secondary: #5f5f5f;
+  --color-on-tertiary-fixed-variant: #486272;
+  --color-primary: #5f5e5e;
+  --color-on-error: #fff7f6;
+  --color-primary-fixed: #e5e2e1;
+  --color-on-tertiary: #f4faff;
+  --color-on-tertiary-container: #3e5868;
+  --color-surface-tint: #5f5e5e;
+  --color-surface-container-low: #f2f4f4;
+  --color-secondary-container: #e4e2e1;
+  --color-on-secondary-fixed-variant: #5c5b5b;
+  --color-on-secondary-container: #525252;
+  --color-tertiary-dim: #3c5666;
+  --color-tertiary-container: #d0ecff;
+  --color-tertiary-fixed: #d0ecff;
+  --color-on-secondary: #fbf8f8;
+  --color-error: #9f403d;
+  --color-on-primary-fixed-variant: #5c5b5b;
+  --color-on-secondary-fixed: #3f3f3f;
+  --color-inverse-primary: #ffffff;
+  --color-on-error-container: #752121;
+  --color-inverse-on-surface: #9c9d9d;
+  --color-surface-dim: #d4dbdd;
+  --color-surface-variant: #dde4e5;
+  --color-outline-variant: #adb3b4;
+  --color-inverse-surface: #0c0f0f;
+  --color-surface-bright: #f9f9f9;
+  --color-secondary-dim: #535353;
+  --color-primary-container: #e5e2e1;
+  --color-background: #f9f9f9;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: #2d3435;
+  font-optical-sizing: auto;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Página de case study — tema escuro */
+@layer components {
+  .case-study-hero-title {
+    @apply font-headline text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl lg:text-[2.75rem];
+  }
+  .case-study-section-heading {
+    @apply font-headline text-3xl font-bold tracking-tight text-white md:text-4xl;
+  }
+  .case-study-block-title {
+    @apply font-headline text-2xl font-bold tracking-tight text-white md:text-3xl;
+  }
+  .case-study-label {
+    @apply font-headline text-sm font-bold uppercase tracking-wide text-white;
+  }
+  .case-study-body {
+    @apply font-body text-base leading-relaxed text-white;
+  }
+  .case-study-caption {
+    @apply font-body block text-center text-sm leading-relaxed text-white;
+  }
+  .case-study-metric-value {
+    @apply font-headline text-3xl font-bold leading-none text-white md:text-4xl;
+  }
+  .case-study-metric-desc {
+    @apply font-body text-sm leading-snug text-white;
+  }
 }
