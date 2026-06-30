@@ -3,14 +3,16 @@ import Image from "next/image";
 import { imageFrameClass } from "./imageFrame";
 
 type Props = {
-  title: string;
+  caseName: string;
+  subtitle: string;
   imageSrc: string;
   imageAlt: string;
   imageFrameVariant?: ProjectImageFrameVariant;
 };
 
 export default function ProjectCaseHero({
-  title,
+  caseName,
+  subtitle,
   imageSrc,
   imageAlt,
   imageFrameVariant = "forest",
@@ -18,22 +20,24 @@ export default function ProjectCaseHero({
   return (
     <header className="bg-black text-white">
       <div className="mx-auto max-w-5xl px-8 pt-16 pb-10 md:pt-24 md:pb-14">
-        <h1 className="case-study-hero-title text-center">{title}</h1>
+        <p className="font-headline text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+          {caseName}
+        </p>
+        <h1 className="case-study-hero-title mt-4 text-left">{subtitle}</h1>
       </div>
       <div className="mx-auto max-w-5xl px-8 pb-16 md:pb-24">
         <div
-          className={`overflow-hidden rounded-2xl p-6 shadow-2xl md:p-10 lg:p-12 ${imageFrameClass[imageFrameVariant]}`}
+          className={`overflow-hidden rounded-2xl shadow-2xl ${imageFrameClass[imageFrameVariant]}`}
         >
-          <div className="relative mx-auto aspect-video w-full max-w-4xl">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 896px"
-              priority
-            />
-          </div>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={1920}
+            height={1080}
+            className="block h-auto w-full"
+            sizes="(max-width: 1024px) 100vw, 896px"
+            priority
+          />
         </div>
       </div>
     </header>
