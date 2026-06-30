@@ -28,7 +28,7 @@ export default function ProjectsHubPage() {
               <h1 className="font-headline text-5xl font-bold text-white md:text-6xl">Projetos</h1>
               <p className="max-w-2xl font-body text-lg leading-relaxed text-neutral-400 md:text-xl md:leading-[1.8]">
                 Como designer de produto com experiência em UX/UI e front-end, desenvolvo
-                interfaces digitais visualmente refinadas e altamente funcionais — traduzindo
+                interfaces digitais visualmente refinadas e altamente funcionais, traduzindo
                 dados complexos em experiências claras, do discovery à entrega em produção.
               </p>
             </div>
