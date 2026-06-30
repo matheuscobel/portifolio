@@ -11,7 +11,13 @@ function scrollToTop() {
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPathname, setMenuPathname] = useState(pathname);
   const menuId = useId();
+
+  if (pathname !== menuPathname) {
+    setMenuPathname(pathname);
+    setMenuOpen(false);
+  }
 
   const isHomeStyleNav = pathname === "/" || pathname.startsWith("/projects");
 
@@ -28,10 +34,6 @@ export default function Navbar() {
     : "font-headline text-sm font-normal tracking-tight text-neutral-500 transition-colors hover:text-neutral-900 md:text-base";
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
-
-  useEffect(() => {
-    closeMenu();
-  }, [pathname, closeMenu]);
 
   useEffect(() => {
     if (!menuOpen) return;
