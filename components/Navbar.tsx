@@ -4,12 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuId = useId();
 
-  /** Home e páginas de case study: mesma nav fixa em vidro escuro por cima do conteúdo */
   const isHomeStyleNav = pathname === "/" || pathname.startsWith("/projects");
 
   const shell = isHomeStyleNav
@@ -54,21 +57,32 @@ export default function Navbar() {
     ? `${mobileLinkBase} text-white/90 hover:bg-white/10 hover:text-white`
     : `${mobileLinkBase} text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900`;
 
+  const handleHomeClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (pathname === "/") {
+        e.preventDefault();
+        scrollToTop();
+      }
+    },
+    [pathname],
+  );
+
   return (
     <nav className={`fixed top-0 z-50 w-full ${shell}`}>
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-6 md:h-[4.5rem] md:px-8">
         <Link
           className={`shrink-0 font-headline text-lg font-bold tracking-tight md:text-xl ${isHomeStyleNav ? "text-white" : "text-neutral-900"}`}
           href="/"
+          onClick={handleHomeClick}
         >
           Matheus Cobel
         </Link>
 
         <div className="hidden items-center gap-5 md:flex md:gap-8">
-          <Link className={navLinkBold} href="/">
+          <Link className={navLinkBold} href="/" onClick={handleHomeClick}>
             Home
           </Link>
-          <Link className={navLinkMuted} href="/#projects">
+          <Link className={navLinkMuted} href="/projects">
             Projetos
           </Link>
           <Link
@@ -120,14 +134,17 @@ export default function Navbar() {
                   role="menuitem"
                   className={mobileLinkHome}
                   href="/"
-                  onClick={closeMenu}
+                  onClick={(e) => {
+                    handleHomeClick(e);
+                    closeMenu();
+                  }}
                 >
                   Home
                 </Link>
                 <Link
                   role="menuitem"
                   className={mobileLinkMuted}
-                  href="/#projects"
+                  href="/projects"
                   onClick={closeMenu}
                 >
                   Projetos

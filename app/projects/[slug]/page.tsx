@@ -2,7 +2,6 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProjectCaseBlock from "@/components/project/ProjectCaseBlock";
 import ProjectCaseHero from "@/components/project/ProjectCaseHero";
-import ProjectCaseImpact from "@/components/project/ProjectCaseImpact";
 import ProjectCaseSummary from "@/components/project/ProjectCaseSummary";
 import { getProjectBySlug, projects } from "@/content/projects";
 import type { Metadata } from "next";
@@ -36,27 +35,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     <>
       <Navbar />
       <main className="bg-black pt-16 md:pt-[4.5rem]">
-        <div className="border-b border-white/10 bg-black">
-          <div className="mx-auto max-w-5xl px-8 pt-8 pb-4 md:pt-10">
-            <Link
-              href="/#projects"
-              className="inline-flex items-center gap-2 text-sm font-medium text-white underline-offset-4 transition-colors hover:underline hover:opacity-90"
-            >
-              ← Voltar aos projetos
-            </Link>
-          </div>
+        <div className="mx-auto max-w-5xl px-8 pt-8 pb-4 md:pt-10">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 text-xl text-white transition-opacity hover:opacity-90 md:text-2xl"
+            style={{ fontFamily: "'Caveat', cursive", fontWeight: 600 }}
+          >
+            <span className="material-symbols-outlined text-xl transition-transform duration-300 group-hover:-translate-x-2 md:text-2xl">
+              arrow_back
+            </span>
+            Voltar aos projetos
+          </Link>
         </div>
 
         <ProjectCaseHero
-          title={project.caseTitle}
+          caseName={project.caseName}
+          subtitle={project.subtitle}
           imageSrc={project.coverImage}
           imageAlt={project.coverAlt}
           imageFrameVariant={project.heroImageFrameVariant}
         />
 
-        <ProjectCaseSummary summary={project.summary} />
-
-        <ProjectCaseImpact intro={project.impact.intro} metrics={project.impact.metrics} />
+        <ProjectCaseSummary meta={project.meta} />
 
         {project.bodyBlocks.map((block, i) => (
           <ProjectCaseBlock key={`${project.slug}-block-${i}`} block={block} />
